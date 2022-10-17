@@ -34,7 +34,7 @@ float P(int n, float a[], float t[], int M, int V) {
     if(n == 0){
         float t = 0;
         for (int i = 0; i <= V; i++) {
-            t += x(i, a, t, M);
+            t += x(i, a, t);
         }
         return 1/t;
     }
