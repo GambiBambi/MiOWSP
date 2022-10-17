@@ -18,7 +18,7 @@ float x(int n, float a[], float t[]) {
         break;
     }
     case 3: {
-        return ((t[0]*t[1] + t[1])a[0]*a[1]) + ((t[0]*t[0]*t[0]*a[0]*a[0]*a[0])/6);
+        return ((t[0]*t[1] + t[1])*a[0]*a[1]) + ((t[0]*t[0]*t[0]*a[0]*a[0]*a[0])/6);
     }
     default: {
         return (t[1]*a[1]*x(n-2, a, t)) + (t[0]*a[0]*x(n-1, a, t));
