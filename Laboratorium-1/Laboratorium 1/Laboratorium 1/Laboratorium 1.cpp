@@ -3,7 +3,7 @@
 
 using namespace std;
 
-float x(int n, float a[], float t[], int M, int V) {
+float x(int n, float a[], float t[]) {
     switch (n) {
     case 0: {
         return 1;
@@ -13,8 +13,16 @@ float x(int n, float a[], float t[], int M, int V) {
         return a[0] * t[0];
         break;
     }
+    case 2: {
+        return ((t[1]*a[1]) + (t[0]*t[0]*a[0]*a[0]))/2;
+        break;
+    }
+    case 3: {
+        return ((t[0]*t[1] + t[1])a[0]*a[1]) + ((t[0]*t[0]*t[0]*a[0]*a[0]*a[0])/6);
+    }
     default: {
-        return P(0, a, t, M, V)/P(n, a, t, M, V);
+        return (t[1]*a[1]*x(n-2, a, t)) + (t[0]*a[0]*x(n-1, a, t));
+        break;
     }
     }
 }
@@ -50,22 +58,25 @@ int main() {
     vector<float> a, t;
     int M;
     int V;
+    float at, tt;
+    
+    cout << "Podaj wartość M: ";
+    cin >> M;
+    cout << "Podaj wartość V: ";
+    cin >> V;
 
     cout << "Podaj parametry a: " << endl;
     for (int i = 0; i < M; i++) {
         cout << i+1 << ": ";
-        cin >> a[i];
-        cout << endl;
+        cin >> at;
+        a.push_back(at);
     }
     cout << "Podaj parametry t: " << endl;
     for (int i = 0; i < M; i++) {
         cout << i+1 << ": ";
         cin >> t[i];
-        cout << endl;
+        t.push_back(tt);
     }
-
-    cin >> M;
-    cin >> V;
 
     cout << b(V, a, t, M, V);
 
