@@ -3,7 +3,7 @@
 
 using namespace std;
 
-float x(int n, float a[], float t[], int M) {
+float x(int n, float a[], float t[], int M, int V) {
     switch (n) {
     case 0: {
         return 1;
@@ -14,7 +14,7 @@ float x(int n, float a[], float t[], int M) {
         break;
     }
     default: {
-        return P;
+        return P(0, a, t, M, V)/P(n, a, t, M, V);
     }
     }
 }
